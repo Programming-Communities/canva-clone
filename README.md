@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+```markdown
+# Canvas Clone - Step by Step Guide
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 1️⃣ Next.js Files Explanation
+```
+📦canva-clone
+<br>
+┣ 📂public          # Static files (accessible at /file.svg)
+<br>
+┣ 📜.env.local      # Environment variables (secret keys)
+<br>
+┣ 📜.gitignore      # Files to exclude from Git
+<br>
+┣ 📜next.config.mjs # Next.js configuration
+<br>
+┣ 📜package.json    # Project dependencies
+<br>
+┗ 📜README.md       # Project documentation
+<br>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2️⃣ Tailwind CSS Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Install Tailwind v4:
+```bash
+npm install tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Check if Tailwind is working:
+Create `app/page.js` with:
+```jsx
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
-## Learn More
+export default function Home() {
+  return (
+    <div>
+      <Button>Subcriber</Button>
+    </div>
+  );
+}
 
-To learn more about Next.js, take a look at the following resources:
+```
+*If button turns blue, Tailwind works!*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 3️⃣ Convex DB Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Install and Initialize:
+```bash
+npm install convex
+npx convex init
+```
 
-## Deploy on Vercel
+### Auto-generated Files:
+```
+convex/
+  └── convex.json   # Project config
+.env.local          # Created automatically with:
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Required `.env.local` Content:
+```env
+# Deployment used by `npx convex dev`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+CONVEX_DEPLOYMENT=dev:benevolent-beagle-320
+
+NEXT_PUBLIC_CONVEX_URL=https://your-convex-url-here
+```
+*Get URL from terminal after `npx convex dev`*
+
+## 4️⃣ Run Project
+```bash
+npm run dev       # Frontend
+npx convex dev    # Backend
+```
+
+
