@@ -3,6 +3,7 @@ import { WorkspacemMenu } from '@/services/Options'
 import { CirclePlus } from 'lucide-react'
 import { usePathname } from 'next/navigation';
 import React from 'react'
+import CustomCanvasDialog from './CustomCanvasDialog';
 
 function Sidebar() {
 
@@ -14,12 +15,12 @@ function Sidebar() {
   return (
     <div className='h-screen  shadow-sm p-2 bg-pink-50'>
 
-
+      <CustomCanvasDialog>
       <div className=' p-2 flex items-center flex-col hover:cursor-pointer mb-5'>
         <CirclePlus className='bg-purple-600 text-white rounded-full h-8 w-8' />
         <h2 className='text-sm text-purple-600 '> Create</h2> 
       </div>
-
+      </CustomCanvasDialog>
 
 
       {WorkspacemMenu.map((menu,index)=>(

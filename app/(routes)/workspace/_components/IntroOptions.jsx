@@ -27,7 +27,7 @@ function IntroOptions() {
     });
 
     console.log(result);
-    toast.success("Design created successfully!");
+    // toast.success(" ");
   };
 
   return (

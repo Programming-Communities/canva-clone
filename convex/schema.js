@@ -7,6 +7,7 @@ export default defineSchema({
         email: v.string(),
         picture: v.string(),
         subscriptionId: v.optional(v.string()),
+        
     }),
 
     designs:defineTable({
@@ -15,7 +16,8 @@ export default defineSchema({
         height:v.number(),
         jsonTemplate:v.optional(v.any()),
         imagePreview:v.optional(v.string()),
-        uid:v.id('users'),
+        uid: v.id('users'),
+        
     })
 
 })
