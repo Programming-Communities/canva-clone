@@ -14,6 +14,7 @@ import { useMutation } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { Loader2Icon } from 'lucide-react';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 function CustomCanvasDialog({ children  }) {
     const [name, setName] = useState();
@@ -22,6 +23,7 @@ function CustomCanvasDialog({ children  }) {
     const { userDetail } = useContext(UserDetailContext);
     const [loading, setLoading] = useState(false);
     const createDesignRecord = useMutation(api.designs.CreateNewDesign);
+    const router = useRouter();
 
     const onCreate = async () => {
         toast("Loading....");
@@ -36,6 +38,9 @@ function CustomCanvasDialog({ children  }) {
         console.log(result);
         // toast.success("Design created successfully!");
         setLoading(false);
+        // Navigate to Editor Screen
+        // router.push (`/workspace/${result._id}`);
+        router.push ('/design/' +result);
     };
 
     return (
@@ -46,9 +51,11 @@ function CustomCanvasDialog({ children  }) {
                     <DialogTitle>Create Custom Canvas</DialogTitle>
                     <DialogDescription>
                         <div>
-                            <h2 className="text-sm">Provide Canvas width and height</h2>
-                            <div className="mt-5">
-                                <label>Design Name</label>
+                            {/* <h2 className="text-sm">Provide Canvas width and height</h2> */}
+                            <span className="text-lg font-bold">Provide Canvas width and height</span>
+
+                            <div className="mt-5  ">
+                                <label className="mb-2 block">Design Name</label>
                                 <Input
                                     placeholder="Design Name"
                                     onChange={(e) => setName(e.target.value)}

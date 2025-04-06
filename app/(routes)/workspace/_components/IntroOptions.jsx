@@ -6,10 +6,12 @@ import { canvasSizeOptions } from "@/services/Options";
 import { useMutation } from "convex/react";
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 function IntroOptions() {
   const createDesignRecord = useMutation(api.designs.CreateNewDesign);
   const { userDetail } = useContext(UserDetailContext); // Now this will work!
+  const router = useRouter()
 
   const OnCanvasOptionSelect = async (option) => {
     if (!userDetail) {
@@ -28,6 +30,11 @@ function IntroOptions() {
 
     console.log(result);
     // toast.success(" ");
+
+    // Navigate to Editor Screen
+    // router.push (`/workspace/${result._id}`);
+    router.push ('/design/' +result);
+
   };
 
   return (
